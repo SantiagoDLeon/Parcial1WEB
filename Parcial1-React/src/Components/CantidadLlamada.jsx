@@ -17,6 +17,8 @@ const CantidadLlamada = () => {
       }
   
       setCostoTotal(costo);
+      console.log(`Duración de la llamada: ${duracion} minutos`);
+      console.log(`Costo total calculado: ${costo} pesos`);
     };
   
     return (

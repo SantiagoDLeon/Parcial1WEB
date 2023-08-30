@@ -18,10 +18,13 @@ const Saludo = () => {
       const horaActual = parseInt(hora);
   
       if (horaActual >= 0 && horaActual < 12) {
+        console.log(`Hora ingresada: ${horaActual}`);
         return `Buenos días, ${nombre}`;
       } else if (horaActual >= 12 && horaActual < 18) {
+        console.log(`Hora ingresada: ${horaActual}`);
         return `Buenas tardes, ${nombre}`;
       } else {
+        console.log(`Hora ingresada: ${horaActual}`);
         return `Buenas noches, ${nombre}`;
       }
     };
