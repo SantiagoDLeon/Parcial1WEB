@@ -2,37 +2,37 @@ import React from "react";
 import { useState } from "react";
 
 const Converter = () => {
-    const [inputSeconds, setInputSeconds] = useState(0);
-    const [hours, setHours] = useState(0);
-    const [minutes, setMinutes] = useState(0);
-    const [seconds, setSeconds] = useState(0);
+    const [segundosIngresados, setSegundosIngresados] = useState(0);
+    const [horas, setHoras] = useState(0);
+    const [minutos, setMinutos] = useState(0);
+    const [segundos, setSegundos] = useState(0);
+    
+    const manejarCambioDeInput = (event) => {
+      const valorInput = parseInt(event.target.value);
+      setSegundosIngresados(valorInput);
+    
+      const segundosRestantes = valorInput % 60;
+      const minutosTotales = Math.floor(valorInput / 60);
+      const minutosRestantes = minutosTotales % 60;
+      const horasTotales = Math.floor(minutosTotales / 60);
+    
+      setHoras(horasTotales);
+      setMinutos(minutosRestantes);
+      setSegundos(segundosRestantes);
   
-    const handleInputChange = (event) => {
-      const inputValue = parseInt(event.target.value);
-      setInputSeconds(inputValue);
-  
-      const remainingSeconds = inputValue % 60;
-      const totalMinutes = Math.floor(inputValue / 60);
-      const remainingMinutes = totalMinutes % 60;
-      const totalHours = Math.floor(totalMinutes / 60);
-  
-      setHours(totalHours);
-      setMinutes(remainingMinutes);
-      setSeconds(remainingSeconds);
-      console.log(`Converted time: ${totalHours} hours, ${remainingMinutes} minutes, ${remainingSeconds} seconds`);
+      console.log(`Tiempo convertido: ${horasTotales} horas, ${minutosRestantes} minutos, ${segundosRestantes} segundos`);
     };
-  
+    
     return (
       <div>
-        <h2>Seconds Converter</h2>
         <input
           type="number"
-          value={inputSeconds}
-          onChange={handleInputChange}
-          placeholder="Enter seconds"
+          value={segundosIngresados}
+          onChange={manejarCambioDeInput}
+          placeholder="Ingresa los segundos"
         />
         <p>
-          {hours} hours, {minutes} minutes, {seconds} seconds
+          {horas} horas, {minutos} minutos, {segundos} segundos
         </p>
       </div>
     );
